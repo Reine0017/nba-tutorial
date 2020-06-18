@@ -14,11 +14,33 @@ function Subscriptions() {
 
   const saveSubscription = (email) => {
     axios.get(`${URL_SUBS}?email=${email}`).then((response) => {
-      //console.log(response.data);
+      console.log(response.data);
       if (!response.data.length) {
+        axios(URL_SUBS, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          data: JSON.stringify({ email }),
+        }).then((response) => {
+          setEmail("");
+          setSuccess(true);
+          clearMessages();
+        });
       } else {
+        setEmail("");
+        setAlreadyIn(true);
+        clearMessages();
       }
     });
+  };
+
+  const clearMessages = () => {
+    setTimeout(() => {
+      setError(false);
+      setSuccess(false);
+      setAlreadyIn(false);
+    }, 2000);
   };
 
   const handleSubmit = (event) => {
@@ -30,6 +52,7 @@ function Subscriptions() {
       saveSubscription(email);
     } else {
       setError({ error: true });
+      clearMessages();
     }
   };
   return (
@@ -43,6 +66,11 @@ function Subscriptions() {
             placeholder="yourEmail@gmail.com"
             onChange={onChangeInput}
           ></input>
+          <div className={error ? "error show" : "error"}>Check Your Email</div>
+          <div className={success ? "success show" : "success"}>Thank you</div>
+          <div className={alreadyIn ? "success show" : "success"}>
+            You're already subscribed
+          </div>
         </form>
       </div>
       <small>Description here</small>
