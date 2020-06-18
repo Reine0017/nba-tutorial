@@ -10,9 +10,7 @@ const Routes = () => (
   <BrowserRouter>
     <Header />
     <Switch>
-      <Route path="/" components={Home}>
-        HOME
-      </Route>
+      <Route path="/" component={Home}></Route>
     </Switch>
     <Footer />
   </BrowserRouter>
