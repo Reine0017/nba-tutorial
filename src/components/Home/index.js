@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import HomeSlider from "./slider";
 import Subscriptions from "../utils/subscribe";
