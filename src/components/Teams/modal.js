@@ -19,8 +19,8 @@ function MyModal(props) {
   return (
     <>
       <Modal isOpen={showModal} ariaHideApp={false}>
+        <div>Content here</div>
         <button onClick={handleCloseModal}>Close Modal</button>
-        testing
       </Modal>
     </>
   );
