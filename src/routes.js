@@ -8,11 +8,14 @@ import Header from "./components/header";
 
 import Article from "./components/Articles";
 
+import Teams from "./components/Teams";
+
 const Routes = () => (
   <BrowserRouter>
     <Header />
     <Switch>
       <Route path="/article/:id" component={Article}></Route>
+      <Route path="/teams" component={Teams}></Route>
       <Route path="/" component={Home}></Route>
     </Switch>
     <Footer />
