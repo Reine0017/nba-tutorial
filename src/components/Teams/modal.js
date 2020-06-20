@@ -19,7 +19,21 @@ function MyModal(props) {
   return (
     <>
       <Modal isOpen={showModal} ariaHideApp={false}>
-        <div>Content here</div>
+        <div>
+          {props.team ? (
+            <>
+              <h3>Team name: {props.team.name}</h3>
+              <div>Count: {props.team.count}</div>
+              <hr />
+              <div
+                className="modal_content"
+                dangerouslySetInnerHTML={{
+                  __html: props.team.content,
+                }}
+              ></div>
+            </>
+          ) : null}
+        </div>
         <button onClick={handleCloseModal}>Close Modal</button>
       </Modal>
     </>
