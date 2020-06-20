@@ -5,10 +5,12 @@ import { URL_TEAMS } from "../utils/paths";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
+import MyModal from "./modal";
+
 function Teams() {
   const [teams, setTeams] = useState([]);
   const [filtered, setFiltered] = useState([]);
-
+  const [team, setTeam] = useState(null);
   const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
@@ -20,12 +22,23 @@ function Teams() {
 
   //console.log(teams);
 
+  const clearModal = () => {
+    setTeam(null);
+  };
+
+  const showModalTeam = (data) => {
+    setTeam(data);
+  };
+
   const renderList = (filtered) =>
     filtered.map((item, index) => (
       <CSSTransition key={index} timeout={500} className="fade">
-        <div className="team_item">
-          <img alt={item.name} src={`/images/teams/${item.logo}`}></img>
-          <>{console.log(item.logo)}</>
+        <div className="team_item" onClick={() => showModalTeam(item)}>
+          <img
+            alt={item.name}
+            width="150px"
+            src={`/images/teams/${item.logo}`}
+          ></img>
         </div>
       </CSSTransition>
     ));
@@ -37,12 +50,9 @@ function Teams() {
         return item.name.toLowerCase().indexOf(keyword.toLowerCase()) > -1;
       });
       setFiltered(list);
-      console.log(list);
       setKeyword(keyword);
-      console.log(keyword);
     } else {
       setFiltered(teams);
-      console.log(teams);
       setKeyword(keyword);
     }
   };
@@ -62,6 +72,7 @@ function Teams() {
           {renderList(filtered)}
         </TransitionGroup>
       </div>
+      <MyModal team={team} clearModal={() => clearModal()} />
     </div>
   );
 }
