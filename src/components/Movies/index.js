@@ -5,15 +5,16 @@ import { getMoviesList } from "../../actions";
 function Movies() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getMoviesList());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getMoviesList());
+  // }, [dispatch]);
 
   const movies = useSelector((state) => state.movies);
 
   console.log(movies);
   return (
     <>
+      <button onClick={() => dispatch(getMoviesList())}>Click Me</button>
       {movies ? (
         <>
           {movies.map((movie) => (
@@ -21,7 +22,7 @@ function Movies() {
           ))}
         </>
       ) : (
-        "loading"
+        <div>click to fetch data</div>
       )}
     </>
   );
