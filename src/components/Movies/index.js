@@ -11,12 +11,13 @@ function Movies() {
 
   const movies = useSelector((state) => state.movies);
 
+  console.log(movies);
   return (
     <>
       {movies ? (
         <>
           {movies.map((movie) => (
-            <li key={movie.id}>{movie.name}</li>
+            <li key={movie.id}>{movie.title}</li>
           ))}
         </>
       ) : (

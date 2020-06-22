@@ -8,9 +8,7 @@ function Subscriptions() {
   const [success, setSuccess] = useState(false);
   const [alreadyIn, setAlreadyIn] = useState(false);
 
-  const onChangeInput = (event) => (
-    setEmail(event.target.value), console.log(email)
-  );
+  const onChangeInput = (event) => setEmail(event.target.value);
 
   const saveSubscription = (email) => {
     axios.get(`${URL_SUBS}?email=${email}`).then((response) => {
