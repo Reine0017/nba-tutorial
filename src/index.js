@@ -4,7 +4,19 @@ import Routes from "./routes";
 
 //import * as serviceWorker from "./serviceWorker";
 
-ReactDOM.render(<Routes />, document.getElementById("root"));
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+
+import reducers from "./reducers";
+
+const createStorewithMiddleware = applyMiddleware()(createStore);
+
+ReactDOM.render(
+  <Provider store={createStorewithMiddleware(reducers)}>
+    <Routes />
+  </Provider>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

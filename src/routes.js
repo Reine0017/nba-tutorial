@@ -9,6 +9,7 @@ import Header from "./components/header";
 import Article from "./components/Articles";
 
 import Teams from "./components/Teams";
+import Movies from "./components/Movies";
 
 const Routes = () => (
   <BrowserRouter>
@@ -16,6 +17,7 @@ const Routes = () => (
     <Switch>
       <Route path="/article/:id" component={Article}></Route>
       <Route path="/teams" component={Teams}></Route>
+      <Route path="/movies" component={Movies}></Route>
       <Route path="/" component={Home}></Route>
     </Switch>
     <Footer />

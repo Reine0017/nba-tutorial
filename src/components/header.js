@@ -11,8 +11,11 @@ const Header = () => (
           </Link>
         </div>
         <div className="nine columns">
-          <nav></nav>
-          <Link to="/teams">Teams</Link>
+          <nav>
+            <Link to="/teams">Teams</Link>
+            <> </>
+            <Link to="/movies">Movies</Link>
+          </nav>
         </div>
       </div>
     </div>
